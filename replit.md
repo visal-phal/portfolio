@@ -1,6 +1,6 @@
-# [Project name]
+# Visal Phal Portfolio
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A resume-led personal portfolio for Visal Phal with a public profile, contact inbox, and browser-local admin editor.
 
 ## Run & Operate
 
@@ -22,23 +22,29 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/visal-portfolio/src/App.tsx` — public portfolio, contact form, and `/admin` editor
+- `artifacts/visal-portfolio/src/index.css` — ivory / oxblood visual system, typography, grain, and motion
+- `artifacts/visal-portfolio/public/assets/` — extracted portrait and downloadable resume
+- `artifacts/visal-portfolio/README.md` — local run and GitHub Pages instructions
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The first version is static-hosting friendly: contact messages and editable content use `localStorage`.
+- Wouter is configured with the Vite base path so GitHub Pages repository deployments can use a subpath.
+- The visual language intentionally translates the provided resume and reference image into an editorial web experience rather than reproducing a one-page PDF.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+The public site introduces Visal Phal, presents education, work history, skills, contact details, and a downloadable resume. Visitors can submit a message. The admin route lets Visal review browser-local messages and update the site's editable copy.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Clean modern portfolio with a warm ivory, oxblood red, and ink-black palette based on the supplied reference design.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- The admin login is intentionally local-only for GitHub Pages and is not a secure server-backed auth system.
+- For a GitHub repository deployment, build with `BASE_PATH=/repository-name/`.
 
 ## Pointers
 

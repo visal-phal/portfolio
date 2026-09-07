@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  --font-mono: var(--app-font-mono);
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+}
+
+:root {
+  --background: 39 45% 94%;
+  --foreground: 355 26% 13%;
+  --border: 355 19% 78%;
+  --input: 39 30% 88%;
+  --ring: 4 65% 36%;
+  --card: 39 48% 96%;
+  --card-foreground: 355 26% 13%;
+  --card-border: 355 19% 78%;
+  --primary: 4 65% 36%;
+  --primary-foreground: 39 45% 94%;
+  --secondary: 17 33% 82%;
+  --secondary-foreground: 355 26% 13%;
+  --muted: 35 20% 87%;
+  --muted-foreground: 355 11% 38%;
+  --accent: 42 89% 61%;
+  --accent-foreground: 355 26% 13%;
+  --destructive: 0 70% 42%;
+  --destructive-foreground: 39 45% 94%;
+  --app-font-sans: 'DM Sans', sans-serif;
+  --app-font-serif: 'Instrument Serif', Georgia, serif;
+  --app-font-mono: 'DM Mono', monospace;
+  --radius: 0.25rem;
+}
+
+.dark {
+  --background: 355 26% 13%;
+  --foreground: 39 45% 94%;
+  --border: 355 12% 30%;
+  --input: 355 12% 24%;
+  --ring: 4 65% 55%;
+  --card: 355 22% 17%;
+  --card-foreground: 39 45% 94%;
+  --card-border: 355 12% 30%;
+  --primary: 4 65% 50%;
+  --primary-foreground: 39 45% 94%;
+  --secondary: 355 12% 25%;
+  --secondary-foreground: 39 45% 94%;
+  --muted: 355 12% 25%;
+  --muted-foreground: 35 15% 72%;
+  --accent: 42 89% 61%;
+  --accent-foreground: 355 26% 13%;
+  --destructive: 0 70% 48%;
+  --destructive-foreground: 39 45% 94%;
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    min-width: 320px;
+    background-image: radial-gradient(rgba(91, 31, 27, .07) .7px, transparent .7px);
+    background-size: 5px 5px;
+  }
+  ::selection { background: hsl(var(--accent)); color: hsl(var(--foreground)); }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--app-font-serif); }
+  .font-mono-custom { font-family: var(--app-font-mono); }
+  .text-balance { text-wrap: balance; }
+  .paper-grain {
+    position: relative;
+    isolation: isolate;
+  }
+  .paper-grain::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+    opacity: .08;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+  }
+  .reveal {
+    animation: reveal-up .8s cubic-bezier(.2,.8,.2,1) both;
+  }
+  .reveal-delay-1 { animation-delay: .1s; }
+  .reveal-delay-2 { animation-delay: .2s; }
+  .reveal-delay-3 { animation-delay: .3s; }
+  .reveal-delay-4 { animation-delay: .4s; }
+  .ink-line { height: 1px; background: currentColor; transform-origin: left; }
+  .hover-lift { transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease; }
+  .hover-lift:hover { transform: translateY(-4px); box-shadow: 9px 9px 0 hsl(var(--foreground)); }
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

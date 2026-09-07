@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Visal Phal Portfolio"
+description = "A personal software engineering portfolio for Visal Phal, with a public profile, experience timeline, contact form, and local admin workspace."
+version = "1.0.0"
+id = "artifacts/visal-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 21725
+
+[services.development]
+run = "pnpm --filter @workspace/visal-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/visal-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/visal-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "21725"
+BASE_PATH = "/"
