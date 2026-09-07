@@ -118,6 +118,21 @@
   .ink-line { height: 1px; background: currentColor; transform-origin: left; }
   .hover-lift { transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease; }
   .hover-lift:hover { transform: translateY(-4px); box-shadow: 9px 9px 0 hsl(var(--foreground)); }
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .8s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1);
+  }
+  .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+  .menu-pop { animation: menu-pop .25s cubic-bezier(.2,.8,.2,1) both; transform-origin: top right; }
+  .motion-orbit { animation: orbit 18s linear infinite; }
+  .orbit { animation: orbit 12s linear infinite reverse; }
+  .admin-input { transition: border-color .25s ease, background-color .25s ease, box-shadow .25s ease; }
+  .admin-input:focus { background-color: hsl(var(--secondary) / .28); box-shadow: 4px 4px 0 hsl(var(--secondary)); }
+  .admin-shell { background-image: linear-gradient(120deg, hsl(var(--background)), hsl(var(--card)) 52%, hsl(var(--background))); }
+  .admin-login { animation: login-in .7s cubic-bezier(.2,.8,.2,1) both; }
+  .admin-panel, .admin-sidebar-panel { animation: panel-in .7s cubic-bezier(.2,.8,.2,1) both; }
+  .editor-card { animation: panel-in .45s cubic-bezier(.2,.8,.2,1) both; }
 }
 
 @keyframes reveal-up {
@@ -125,7 +140,28 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes menu-pop {
+  from { opacity: 0; transform: translateY(-8px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes orbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes login-in {
+  from { opacity: 0; transform: translateY(18px) rotate(-1deg); }
+  to { opacity: 1; transform: translateY(0) rotate(0); }
+}
+
+@keyframes panel-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .reveal-on-scroll { opacity: 1; transform: none; }
 }

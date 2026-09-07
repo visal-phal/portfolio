@@ -1,6 +1,6 @@
 # Visal Phal Portfolio
 
-A resume-led personal portfolio for Visal Phal with a public profile, contact inbox, and browser-local admin editor.
+A resume-led personal portfolio for Visal Phal with a public profile, contact inbox, and browser-local full-content admin editor.
 
 ## Run & Operate
 
@@ -29,13 +29,14 @@ A resume-led personal portfolio for Visal Phal with a public profile, contact in
 
 ## Architecture decisions
 
-- The first version is static-hosting friendly: contact messages and editable content use `localStorage`.
+- The portfolio remains static-hosting friendly: contact messages, editable content, uploaded portrait data, and local login state use `localStorage`.
 - Wouter is configured with the Vite base path so GitHub Pages repository deployments can use a subpath.
 - The visual language intentionally translates the provided resume and reference image into an editorial web experience rather than reproducing a one-page PDF.
+- The admin editor is content-driven, so public sections render from the same editable model instead of hardcoded timeline/project arrays.
 
 ## Product
 
-The public site introduces Visal Phal, presents education, work history, skills, contact details, and a downloadable resume. Visitors can submit a message. The admin route lets Visal review browser-local messages and update the site's editable copy.
+The public site introduces Visal Phal, presents education, work history, selected work, capabilities, skills, contact details, and a downloadable resume. Visitors can submit a message. The admin route lets Visal review browser-local messages, edit every public section, add/remove entries, manage links, and upload a replacement portrait.
 
 ## User preferences
 
