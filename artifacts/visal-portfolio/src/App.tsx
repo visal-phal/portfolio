@@ -210,16 +210,16 @@ const defaultContent: PortfolioContent = {
       tags: "UX, Prototyping, Research",
       link: "",
     },
-    {
-      id: "project-3",
-      title: "Your next project",
-      type: "Add your work here",
-      year: "2026",
-      description:
-        "Use the editor to replace this example with a real project, case study, or experiment.",
-      tags: "Your tools, Your role",
-      link: "",
-    },
+    // {
+    //   id: "project-3",
+    //   title: "Your next project",
+    //   type: "Add your work here",
+    //   year: "2026",
+    //   description:
+    //     "Use the editor to replace this example with a real project, case study, or experiment.",
+    //   tags: "Your tools, Your role",
+    //   link: "",
+    // },
   ],
   capabilitiesHeading: "How I can help.",
   capabilitiesIntro:
